@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celltrion - 생명공학 기술로 인류 건강에 기여</title>
+    <link rel="icon" href="https://www.celltrion.com/resources/images/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #004c97; /* Celltrion blue */
+            --secondary-color: #007bff; /* Lighter blue */
+            --accent-color: #28a745; /* Green for success/call to action */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #fff;
+            --grey-light: #ececec;
+            --grey-dark: #6c757d;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', '맑은 고딕', Malgun Gothic, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header .logo img {
+            height: 40px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 76, 151, 0.7), rgba(0, 76, 151, 0.7)), url('https://images.unsplash.com/photo-1588196749597-9ff075ee6df5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw4fHxiaW90ZWNobm9sb2d5JTJDc2NpZW5jZXxlbnwwfHx8fDE3MTU3NDQwMjB8MA&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: #003a73;
+        }
+        .btn-secondary {
+            background-color: var(--grey-dark);
+            margin-left: 15px;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+
+        /* Section common styling */
+        .about-section h2, .products-section h2, .rnd-section h2, .contact-section h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .about-section h2::after, .products-section h2::after, .rnd-section h2::after, .contact-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-size: 1.1em;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Products Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-card h3 {
+            margin: 20px 0 10px;
+            color: var(--primary-color);
+        }
+
+        .product-card p {
+            padding: 0 20px 20px;
+            font-size: 0.95em;
+            color: var(--grey-dark);
+        }
+
+        /* R&D Section */
+        .rnd-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .rnd-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .rnd-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .rnd-item ul {
+            list-style: none;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .rnd-item ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--grey-light);
+            font-size: 1.05em;
+        }
+
+        .rnd-item ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            opacity: 0.8;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            header .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header nav {
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            header nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            header nav ul li a {
+                display: block;
+                padding: 10px 0;
+                background-color: var(--light-bg);
+                border-radius: 5px;
+                color: var(--primary-color);
+            }
+
+            header nav ul li a:hover {
+                background-color: var(--grey-light);
+                text-decoration: none;
+            }
+            header nav ul li a::after {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px;
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .about-grid, .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rnd-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rnd-item {
+                min-width: unset;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            .hero {
+                padding: 80px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#home"><img src="https://www.celltrion.com/resources/images/common/logo_ko.png" alt="Celltrion Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#about">셀트리온 소개</a></li>
+                    <li><a href="#products">주요 제품</a></li>
+                    <li><a href="#rnd">R&D</a></li>
+                    <li><a href="#contact">문의</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>생명공학 기술로 인류 건강에 기여합니다</h1>
+                <p>혁신적인 바이오의약품 개발을 통해 글로벌 헬스케어 리더로 도약하는 셀트리온</p>
+                <a href="#products" class="btn">주요 제품 보기</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <h2>셀트리온 소개</h2>
+                <p>셀트리온은 바이오시밀러 및 신약 개발을 선도하는 글로벌 생명공학 기업입니다. 고품질의 의약품을 합리적인 가격으로 제공하여 전 세계 환자들의 삶의 질 향상에 기여하고 있습니다.</p>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <h3>바이오시밀러 선도</h3>
+                        <p>세계 최초 항체 바이오시밀러 램시마 개발 및 상용화로 글로벌 시장을 선도합니다.</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>혁신적인 R&D</h3>
+                        <p>자가면역질환, 항암제 등 다양한 분야에서 신약 및 파이프라인을 확장하고 있습니다.</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>글로벌 네트워크</h3>
+                        <p>110여 개국에 걸친 광범위한 판매 네트워크를 구축하여 전 세계에 기여합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products-section section-padding bg-light">
+            <div class="container">
+                <h2>주요 제품</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Remsima" alt="Remsima">
+                        <h3>램시마 (Remsima)</h3>
+                        <p>자가면역질환 치료를 위한 세계 최초 항체 바이오시밀러.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Truxima" alt="Truxima">
+                        <h3>트룩시마 (Truxima)</h3>
+                        <p>비호지킨 림프종 등 혈액암 치료를 위한 바이오시밀러.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200/FFC107/FFFFFF?text=Herzuma" alt="Herzuma">
+                        <h3>허쥬마 (Herzuma)</h3>
+                        <p>유방암 및 위암 치료를 위한 바이오시밀러.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rnd" class="rnd-section section-padding">
+            <div class="container">
+                <h2>R&D 및 혁신</h2>
+                <p>셀트리온은 혁신적인 바이오의약품 개발을 위해 끊임없이 연구하고 투자합니다. 미래 의학을 선도하는 기술력으로 인류의 건강 증진에 기여할 것입니다.</p>
+                <div class="rnd-features">
+                    <div class="rnd-item">
+                        <h3>연구 분야</h3>
+                        <ul>
+                            <li>자가면역질환</li>
+                            <li>항암제</li>
+                            <li>감염병 (코로나19 등)</li>
+                            <li>신경퇴행성 질환</li>
+                        </ul>
+                    </div>
+                    <div class="rnd-item">
+                        <h3>기술력</h3>
+                        <ul>
+                            <li>세포주 개발 기술</li>
+                            <li>정제 및 제형화 기술</li>
+                            <li>생산 공정 기술</li>
+                            <li>글로벌 임상 개발 역량</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section bg-light section-padding">
+            <div class="container">
+                <h2>문의하기</h2>
+                <p>셀트리온에 대한 더 많은 정보나 문의사항이 있으시면 언제든지 연락 주십시오.</p>
+                <a href="mailto:info@celltrion.com" class="btn btn-primary">이메일 문의</a>
+                <a href="https://www.celltrion.com/ko/pr/contactus" target="_blank" class="btn btn-secondary">공식 웹사이트 방문</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Celltrion. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
